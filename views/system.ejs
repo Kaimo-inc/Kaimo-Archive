@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistem Bilgileri</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style> 
+    body { 
+      background-color: #1e1e1e; 
+      color: white; 
+      padding: 20px; 
+    }
+    .gradient-text {
+      background: linear-gradient(to right, #ffcc00, #ff6600);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="text-4xl font-bold gradient-text mb-6">Sistem Bilgileri</h1>
+  <table class="table-auto border-separate border border-gray-700 w-full text-left">
+    <thead>
+      <tr class="text-yellow-400">
+        <th class="border border-gray-600 px-4 py-2">Özellik</th>
+        <th class="border border-gray-600 px-4 py-2">Değer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for (const [key, value] of Object.entries(systemInfo)) { %>
+        <tr>
+          <td class="border border-gray-600 px-4 py-2"><%= key %></td>
+          <td class="border border-gray-600 px-4 py-2">
+            <%= typeof value === 'object' ? JSON.stringify(value, null, 2) : value %>
+          </td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+</body>
+</html>
